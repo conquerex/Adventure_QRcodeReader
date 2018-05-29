@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     //view Objects
     private Button buttonScan;
-    private TextView textViewName, textViewAddress, textViewResult;
+    private TextView textViewJson, textViewName, textViewAddress, textViewResult;
 
     //qr code scanner object
     private IntentIntegrator qrScan;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         //View Objects
         buttonScan = findViewById(R.id.buttonScan);
+        textViewJson = findViewById(R.id.textViewJson);
         textViewName = findViewById(R.id.textViewName);
         textViewAddress = findViewById(R.id.textViewAddress);
         textViewResult = findViewById(R.id.textViewResult);
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     //data를 json으로 변환
                     JSONObject obj = new JSONObject(result.getContents());
+                    textViewJson.setText(result.getContents());
                     textViewName.setText(obj.getString("name"));
                     textViewAddress.setText(obj.getString("address"));
                 } catch (JSONException e) {
