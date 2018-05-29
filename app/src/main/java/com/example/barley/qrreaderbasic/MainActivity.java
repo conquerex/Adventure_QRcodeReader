@@ -50,12 +50,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void initText() {
+        textViewJson.setText("");
+        textViewName.setText("");
+        textViewAddress.setText("");
+        textViewResult.setText("");
+    }
 
     //Getting the scan results
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
+            initText();
             //qrcode 가 없으면
             if (result.getContents() == null) {
                 Toast.makeText(MainActivity.this, "취소!", Toast.LENGTH_SHORT).show();
